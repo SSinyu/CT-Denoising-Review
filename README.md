@@ -1,7 +1,6 @@
 # CT denoising review
 - table
 
-
 ### 01. A deep convolutional neural network using directional wavelets for low-dose X-ray CT reconstruction (KAIST-net).
 (https://aapm.onlinelibrary.wiley.com/doi/epdf/10.1002/mp.12344)
 ##### **Model**
@@ -13,6 +12,8 @@
   - 512x512, 10 patients, 5743 slices.
   - use a 55x55 patches.
 
+--------
+
 ### 02. Low-dose CT via Convolutional Neural Network.  
 (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5330597/pdf/679.pdf)
 ##### **Model**
@@ -22,6 +23,8 @@
   - 256x256, 165 patients, 7015 slices.
   - impose Poisson noise into normal-dose sinogram.
   - use a 33x33 patches.
+
+--------
 
 ### 03. Improving Low-Dose CT Image Using Residual Convolutional Network.
 (https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8082505)
@@ -34,6 +37,8 @@
   - 512x512, 10 patients, 5080 slices.
   - use a 44x44 patches(2D), 44x44x24 patches(3D).
 
+--------
+
 ### 04. CT Image Denoising with Perceptive Deep Neural Networks
 .
 (https://arxiv.org/pdf/1702.07019.pdf)
@@ -42,6 +47,8 @@
 - Compare the denoised output against the ground truth in another high-dimensional feature space (from VGG).
 ##### **Dataset**
 - cadaver CT image dataset collected at Massachusetts General Hospital (MGH).
+
+--------
 
 ### 05. Low-Dose CT with a Residual Encoder-Decoder Convolutional Neural Network (RED-CNN).
 (https://arxiv.org/ftp/arxiv/papers/1702/1702.00288.pdf)
@@ -56,6 +63,8 @@
   - 512x512, 10 patients, 2378 slices.
   - use a 55x55 patches.
 
+--------
+
 ### 06. Generative adversarial networks for noise reduction in low-dose CT.
 (https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7934380)
 ##### **Model**
@@ -68,6 +77,8 @@
   - voltage of 120 kVp. 50mAs(routine-dose), 10mAs(low-dose).
 - Cardiac CT scan (28 patients)
   - voltage of 120 kVp. 50~60mAs(routine-dose), 10~12mAs(low-dose).
+
+--------
 
 ### 07. Structure-sensitive Multi-scale Deep Neural Network for Low-Dose CT Denoising.
 (https://arxiv.org/pdf/1805.00587.pdf)
@@ -82,6 +93,8 @@
   - 512x512, 10 patients, 2378 slices.
   - use a 80x80x11 patches.
 
+--------
+
 ### 08. Low Dose CT Image Denoising Using a Generative Adversarial Network with Wasserstein Distance and Perceptual Loss
 (https://arxiv.org/pdf/1708.00961.pdf)
 ##### **Model**
@@ -92,6 +105,8 @@
 - AAPM-Mayo Clinic Low-Dose CT Grand Challenge.
   - 512x512, 10 patients, 4000 slices.
   - use a 64x64 patches.
+
+--------
 
 ### 09. Sharpness-aware Low Dose CT Denoising Using Conditional Generative Adversarial Network.
 (https://arxiv.org/pdf/1708.06453.pdf)
@@ -111,6 +126,8 @@
 - Data Science Bowl 2017 
   - Detect lung cancer from LDCTs.
 
+--------
+
 ### 10. 3D Convolutional Encoder-Decoder Network for Low-Dose CT via Transfer Learning from a 2D Trained Network.
 (https://arxiv.org/pdf/1802.05656.pdf)
 ##### **Model**
@@ -121,3 +138,5 @@
 - AAPM-Mayo Clinic Low-Dose CT Grand Challenge.
   - 512x512, 10 patients.
   - use a 64x64 patches.
+
+--------
