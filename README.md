@@ -7,6 +7,8 @@ PSNR|----|----|----|----|----|----
 SSIM|----|----|----|----|----|----
 RMSE|----|----|----|----|----|----
 
+-----------
+
 ## 01. A deep convolutional neural network using directional wavelets for low-dose X-ray CT reconstruction (KAIST-net).
 (https://aapm.onlinelibrary.wiley.com/doi/epdf/10.1002/mp.12344)
 ### **Model**
