@@ -1,24 +1,24 @@
 # CT denoising review
 - table
 
-### 01. A deep convolutional neural network using directional wavelets for low-dose X-ray CT reconstruction (KAIST-net).
+## 01. A deep convolutional neural network using directional wavelets for low-dose X-ray CT reconstruction (KAIST-net).
 (https://aapm.onlinelibrary.wiley.com/doi/epdf/10.1002/mp.12344)
-##### **Model**
+### **Model**
 ![KAISTNET](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B01%5DKAISTNET.PNG)
 - This method works on wavelet coefficients of low-dose CT images.
 - Network contains 24 convolution layers.
-##### **Dataset**
+### **Dataset**
 - AAPM-Mayo Clinic Low-Dose CT Grand Challenge (only abdominal CT images).
   - 512x512, 10 patients, 5743 slices.
   - use a 55x55 patches.
 
 --------
 
-### 02. Low-dose CT via Convolutional Neural Network.  
+## 02. Low-dose CT via Convolutional Neural Network.  
 (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5330597/pdf/679.pdf)
-##### **Model**
+### **Model**
 - Network use only 3 conoluional layers (Conv - ReLU - Conv - ReLU - Conv).
-##### **Dataset**
+### **Dataset**
 - TCIA(The Cancer Imaging Archive) normal-dose CT images.
   - 256x256, 165 patients, 7015 slices.
   - impose Poisson noise into normal-dose sinogram.
@@ -26,36 +26,36 @@
 
 --------
 
-### 03. Improving Low-Dose CT Image Using Residual Convolutional Network.
+## 03. Improving Low-Dose CT Image Using Residual Convolutional Network.
 (https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8082505)
-##### **Model**
+### **Model**
 ![ResCNN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B03%5DResidual_CNN.PNG)
 - 2D residual convolution net.
 - 3D residual convolution net (take into account the spatial continuity of tissues).
-##### **Dataset**
+### **Dataset**
 - AAPM-Mayo Clinic Low-Dose CT Grand Challenge.
   - 512x512, 10 patients, 5080 slices.
   - use a 44x44 patches(2D), 44x44x24 patches(3D).
 
 --------
 
-### 04. CT Image Denoising with Perceptive Deep Neural Networks
+## 04. CT Image Denoising with Perceptive Deep Neural Networks
 .
 (https://arxiv.org/pdf/1702.07019.pdf)
-##### **Model**
+### **Model**
 ![PerDNN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B04%5DPerceptive_DNN.PNG)
 - Compare the denoised output against the ground truth in another high-dimensional feature space (from VGG).
-##### **Dataset**
+### **Dataset**
 - cadaver CT image dataset collected at Massachusetts General Hospital (MGH).
 
 --------
 
-### 05. Low-Dose CT with a Residual Encoder-Decoder Convolutional Neural Network (RED-CNN).
+## 05. Low-Dose CT with a Residual Encoder-Decoder Convolutional Neural Network (RED-CNN).
 (https://arxiv.org/ftp/arxiv/papers/1702/1702.00288.pdf)
-##### **Model**
+### **Model**
 ![REDCNN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B05%5DRED-CNN.PNG)
 - Incoporated a deconvolution network and shortcut connections into a CNN model.
-##### **Dataset**
+### **Dataset**
 - NBIA(Natioanl Biomedical Imaging Archive) normal-dose CT images.
   - 256x256, 165 patients, 7015 slices.
   - adding Poisson noise into the sinogram simulated from the normal-dose images.
@@ -65,13 +65,13 @@
 
 --------
 
-### 06. Generative adversarial networks for noise reduction in low-dose CT.
+## 06. Generative adversarial networks for noise reduction in low-dose CT.
 (https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7934380)
-##### **Model**
+### **Model**
 ![GAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B06%5DGAN.PNG)
 - Generator transforms the low-dose CT image into noise reduced image.
 - Discriminator determines whether the input is a real routine-dose image or not.
-##### **Dataset**
+### **Dataset**
 - Phantom CT scans
   - An anthropomorphic thorax phantom (QRM anthropomorphic thorax phantom)
   - voltage of 120 kVp. 50mAs(routine-dose), 10mAs(low-dose).
@@ -80,41 +80,41 @@
 
 --------
 
-### 07. Structure-sensitive Multi-scale Deep Neural Network for Low-Dose CT Denoising.
+## 07. Structure-sensitive Multi-scale Deep Neural Network for Low-Dose CT Denoising.
 (https://arxiv.org/pdf/1805.00587.pdf)
-##### **Model**
+### **Model**
 ![SMGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B07%5DSMGAN.PNG)
 - (Part 1). Generator consist of eight 3D convolutional (Conv) layers.
 - (Part 2). Calculate patch-wise error between the 3D output and the 3D NDCT images.
 ![SMGAN_loss](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B07%5Dloss.PNG)
 - (Part 3). Discriminator distinguishes between two images.
-##### **Dataset**
+### **Dataset**
 - AAPM-Mayo Clinic Low-Dose CT Grand Challenge.
   - 512x512, 10 patients, 2378 slices.
   - use a 80x80x11 patches.
 
 --------
 
-### 08. Low Dose CT Image Denoising Using a Generative Adversarial Network with Wasserstein Distance and Perceptual Loss
+## 08. Low Dose CT Image Denoising Using a Generative Adversarial Network with Wasserstein Distance and Perceptual Loss
 (https://arxiv.org/pdf/1708.00961.pdf)
-##### **Model**
+### **Model**
 ![WGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B08%5DWGAN.PNG)
 - GAN with Wasserstein distance.
 - (Part 2). Comparing the perceptual feature of a denoised output against those of the ground truth in an established feature space.
-##### **Dataset**
+### **Dataset**
 - AAPM-Mayo Clinic Low-Dose CT Grand Challenge.
   - 512x512, 10 patients, 4000 slices.
   - use a 64x64 patches.
 
 --------
 
-### 09. Sharpness-aware Low Dose CT Denoising Using Conditional Generative Adversarial Network.
+## 09. Sharpness-aware Low Dose CT Denoising Using Conditional Generative Adversarial Network.
 (https://arxiv.org/pdf/1708.06453.pdf)
-##### **Model**
+### **Model**
 ![SAGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B09%5DSAGAN.PNG)
 - Sharpness detection network : generate a similar sharpness map as closs as to real CT.
 ![SAGAN_loss](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B09%5DSAGNA_loss.PNG)
-##### **Dataset**
+### **Dataset**
 - NBIA(Natioanl Biomedical Imaging Archive) normal-dose CT images.
   - 512x512, 239 slices.
   - adding Poisson + normally Gaussian noise.
@@ -128,13 +128,13 @@
 
 --------
 
-### 10. 3D Convolutional Encoder-Decoder Network for Low-Dose CT via Transfer Learning from a 2D Trained Network.
+## 10. 3D Convolutional Encoder-Decoder Network for Low-Dose CT via Transfer Learning from a 2D Trained Network.
 (https://arxiv.org/pdf/1802.05656.pdf)
-##### **Model**
+### **Model**
 ![Transfer](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B10%5DTransfer.PNG)
 - Concatenation of feature-maps from the two sides of the conveying-path.
 - Learn the 2D model first, and use it to initialize the 3D network. This transfer learning shows much faster convergence and better performance.
-##### **Dataset**
+### **Dataset**
 - AAPM-Mayo Clinic Low-Dose CT Grand Challenge.
   - 512x512, 10 patients.
   - use a 64x64 patches.
