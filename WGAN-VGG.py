@@ -5,7 +5,6 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
-from WGAN_VGG_model import FeatureExtractor, Generator_CNN, Discriminator_CNN
 from torch.autograd import Variable
 from torchvision.models import vgg19
 
