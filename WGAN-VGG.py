@@ -109,7 +109,26 @@ class Discriminator_CNN(nn.Module):
         return out
 
 
+def calc_gradeint_penalty(discriminator, real_data, fake_data, lambda_):
+    alpha = torch.rand(BATCH_SIZE*CROP_NUMBER, 1)
+    alpha = alpha.expand(real_data.size())
+    alpha = alpha.cuda(gpu) if torch.cuda.is_available() else alpha
 
+    interpolates = alpha * real_data + ((1-alpha) * fake_data)
+
+    if torch.cuda.is_available():
+        interpolates = interpolates.cuda(gpu)
+    interpolates = autograd.Variable(interpolates, requires_grad=True)
+
+    disc_interpolates = discriminator(interpolates)
+
+    gradients = autograd.grad(outputs=disc_interpolates, inputs=interpolates, grad_outputs=torch.ones(disc_interpolates.size()).cuda(gpu) if torch.cuda.is_available() else torch.ones(disc_interpolates.size()), create_graph=True, retain_graph=Ture, only_inputs=True)[0]
+
+    gradient_penalty = ((gradients.norm(2, dim=1) - 1) ** 2).mean() * lambda_
+    return gradient_penalty
+
+    
+    
 #### training ####
 LEARNING_RATE = 1e-3
 LEARNING_RATE_ = 1e-4
@@ -119,6 +138,7 @@ BATCH_SIZE = 4
 CROP_NUMBER = 100  # The number of patches to extract from a single image. --> total batch img is BATCH_SIZE * CROP_NUMBER
 PATCH_SIZE = 55
 NUM_WORKERS = 10
+LAMBDA_ = 10
 d_min = -1024.0
 d_max = 3072.0
 
@@ -140,6 +160,7 @@ assert len(os.listdir(os.path.join(data_path, "{}/full_3mm").format(patient))) =
 train_dcm = train_dcm_data_loader(input_dir, target_dir, crop_size=PATCH_SIZE, crop_n=CROP_NUMBER)
 train_loader = DataLoader(train_dcm, batch_size=BATCH_SIZE, shuffle=True, num_workers=NUM_WORKERS)
 
+criterion_perceptual = nn.L1Loss()
 
 generator = Generator_CNN()
 discriminator = Discriminator_CNN(input_size=55)
@@ -155,19 +176,10 @@ generator.to(device)
 discriminator.to(device)
 feature_extractor.to(device)
 
-
 criterion_GAN = nn.MSELoss()
-criterion_perceptual = nn.L1Loss()
-
-
 optimizer_G = torch.optim.Adam(generator.parameters(), lr=1e-5, betas=(0.5,0.9))
 optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=1e-5, betas=(0.5,0.9))
 
-patch = (BATCH_SIZE*CROP_NUMBER, 1)
-
-Tensor = torch.cuda.FloatTensor
-valid = Variable(Tensor(np.ones(patch)), requires_grad=False)
-fake = Variable(Tensor(np.zeros(patch)), requires_grad=False)
 
 total_step = len(train_loader)
 for epoch in range(10):
@@ -180,34 +192,46 @@ for epoch in range(10):
         target_img = torch.tensor(targets).unsqueeze(1).to(device)
         target_img = target_img.type(torch.FloatTensor)
 
-        # Generator
-        optimizer_G.zero_grad()
+        # Train D
+        discriminator.zero_grad()
 
-        gen = generator(input_img)
+        # Train D on real
+        d_real_decision = discriminator(target_img)
+        d_real_error = -torch.mean(d_real_decision)
+        d_real_error.backward()
 
-        gen_valid = discriminator(gen)
-        loss_GAN = criterion_GAN(gen_valid, valid)
-
-        gen_dup = gen.repeat(1,3,1,1)
-        target_dup = target_img.repeat(1,3,1,1)
-        gen_features = feature_extractor(gen_dup)
-        real_features = Variable(feature_extractor(target_dup), requires_grad=False)
-        loss_perceptual = criterion_perceptual(gen_features, real_features)
-
-        loss_G = loss_GAN + (0.1 * loss_perceptual)
-        loss_G.backward()
-        optimizer_G.step()
-
-        # Discriminator
-        optimizer_D.zero_grad()
-
-        loss_real = criterion_GAN(discriminator(target_img), valid)
-        loss_fake = criterion_GAN(discriminator(input_img.detach()), fake)
-
-        loss_D = (loss_real + loss_fake) / 2
-
-        loss_D.backward()
+        # Train D on fake
+        d_fake_data = generator(input_img).detach()
+        d_fake_decision = discriminator(d_fake_data)
+        d_fake_error = torch.mean(d_fake_decision)
+        d_fake_error.backward()
         optimizer_D.step()
+
+        # Train with gradient penalty
+        #gradient_penalty = calc_gradeint_penalty(discriminator, input_img, target_img, 10)
+        #gradient_penalty.backward()
+
+        # Weight Clipping
+        for p in discriminator.parameters():
+            p.data.clamp_(-0.01, 0.01)
+
+        # Train G
+        generator.zero_grad()
+
+        g_fake_data = generator(input_img)
+        dg_fake_decision = discriminator(g_fake_data)
+        g_error = -torch.mean(dg_fake_decision)
+
+        # perceptual Loss
+        fake_data_dup = d_fake_data.repeat(1,3,1,1)
+        real_data_dup = target_img.repeat(1,3,1,1)
+        fake_features = feature_extractor(fake_data_dup)
+        real_features = Variable(feature_extractor(real_data_dup), requires_grad=False)
+        perceptual_error = criterion_perceptual(fake_features, real_features)
+
+        g_perceptual_error = g_error + (0.1 * perceptual_error)
+        g_perceptual_error.backward()
+        optimizer_G.step()
 
         if i % 10 == 0:
             print("[Epoch %d/%d] [Batch %d/%d] [D loss: %f] [G loss: %f]" % (epoch+1, 10, i, len(train_loader), loss_D.item(), loss_G.item()))
