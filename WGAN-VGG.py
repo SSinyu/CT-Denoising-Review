@@ -131,13 +131,11 @@ def calc_gradeint_penalty(discriminator, real_data, fake_data, lambda_):
     
 #### training ####
 LEARNING_RATE = 1e-3
-LEARNING_RATE_ = 1e-4
 NUM_EPOCHS = 1000
-OUT_CHANNELS = 96
 BATCH_SIZE = 4
 CROP_NUMBER = 100  # The number of patches to extract from a single image. --> total batch img is BATCH_SIZE * CROP_NUMBER
 PATCH_SIZE = 55
-NUM_WORKERS = 10
+NUM_WORKERS = 20
 LAMBDA_ = 10
 d_min = -1024.0
 d_max = 3072.0
