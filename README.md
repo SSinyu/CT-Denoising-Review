@@ -1,5 +1,4 @@
-# CT denoising review
-
+# CT image denoising with deep learning
 -----------
 
 ## 01. A deep convolutional neural network using directional wavelets for low-dose X-ray CT reconstruction (KAIST-net).
@@ -141,3 +140,15 @@
   - use a 64x64 patches.
 
 --------
+
+## 11. Cycle Consistent Adversarial Denoising Network for Multiphase Coronary CT Angiography
+(https://arxiv.org/abs/1806.09748)
+### **Model**
+![CYCLEGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B11%5DCYCLEGAN.PNG)
+- In coronary CTA, the images at the low-dose and routine-dose phases do not match each other exactly due to the cardiac motion.
+- Two generator denotes the mapping form low-dose to routine-dose image and from routine-dose to low-dose image, two adversarial discriminators distinguish between input images and synthesized images from the generators
+- Using cycle-consistent adversarial denoising network, learn the mapping between the low and routine dose cardiac phases.
+### **Dataset**
+- 50 CT scans of mitral valve prolapse patients, and 50 CT scans of coronary artery disease patients.
+  - use a 56x56 patches.
+- AAPM-Mayo Clinic Low-Dose CT Grand Challenge.
