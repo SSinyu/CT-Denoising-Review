@@ -11,7 +11,7 @@
 >>  - use a 55x55 patches
 ### **Model**
 > - This method works on wavelet coefficients of low-dose CT images
-> - Network contains 24 convolution layers
+> - Network contains 24 convolution layers  
 > ![KAISTNET](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B01%5DKAISTNET.PNG)
 --------
 #
@@ -38,7 +38,7 @@
 >>  - use a 44x44 patches(2D), 44x44x24 patches(3D)
 ### **Model**
 > - 2D residual convolution net
-> - 3D residual convolution net (take into account the spatial continuity of tissues)
+> - 3D residual convolution net (take into account the spatial continuity of tissues)  
 ![ResCNN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B03%5DResidual_CNN.PNG)
 --------
 #
@@ -49,7 +49,7 @@
 ### **Dataset**
 > - cadaver CT image dataset collected at Massachusetts General Hospital (MGH)
 ### **Model**
-> - Compare the denoised output against the ground truth in another high-dimensional feature space (from VGG)
+> - Compare the denoised output against the ground truth in another high-dimensional feature space (from VGG)  
 ![PerDNN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B04%5DPerceptive_DNN.PNG)
 --------
 #
@@ -65,7 +65,7 @@
 >>  - 512x512, 10 patients, 2378 slices
 >>  - use a 55x55 patches
 ### **Model**
-> - Incoporated a deconvolution network and shortcut connections into a CNN model
+> - Incoporated a deconvolution network and shortcut connections into a CNN model  
 ![REDCNN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B05%5DRED-CNN.PNG)
 --------
 #
@@ -81,7 +81,7 @@
 >>  - voltage of 120 kVp. 50~60mAs(routine-dose), 10~12mAs(low-dose)
 ### **Model**
 > - Generator transforms the low-dose CT image into noise reduced image
-> - Discriminator determines whether the input is a real routine-dose image or not
+> - Discriminator determines whether the input is a real routine-dose image or not  
 ![GAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B06%5DGAN.PNG)
 --------
 #
@@ -95,10 +95,9 @@
 >>  - use a 80x80x11 patches
 ### **Model**
 > - (Part 1). Generator consist of eight 3D convolutional (Conv) layers
-> - (Part 2). Calculate patch-wise error between the 3D output and the 3D NDCT images
+> - (Part 2). Calculate patch-wise error between the 3D output and the 3D NDCT images   
 ![SMGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B07%5DSMGAN.PNG)
-
-> - (Part 3). Discriminator distinguishes between two images
+> - (Part 3). Discriminator distinguishes between two images  
 ![SMGAN_loss](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B07%5Dloss.PNG)
 --------
 #
@@ -112,7 +111,7 @@
 >>  - use a 64x64 patches
 ### **Model**
 > - GAN with Wasserstein distance
-> - (Part 2). Comparing the perceptual feature of a denoised output against those of the ground truth in an established feature space
+> - (Part 2). Comparing the perceptual feature of a denoised output against those of the ground truth in an established feature space  
 ![WGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B08%5DWGAN.PNG)
 --------
 #
@@ -132,9 +131,8 @@
 > - Data Science Bowl 2017 
 >>  - Detect lung cancer from LDCTs
 ### **Model**
-> - Sharpness detection network : generate a similar sharpness map as closs as to real CT
+> - Sharpness detection network : generate a similar sharpness map as closs as to real CT  
 ![SAGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B09%5DSAGAN.PNG)
-
 ![SAGAN_loss](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B09%5DSAGNA_loss.PNG)
 --------
 #
@@ -148,7 +146,7 @@
 >>  - use a 64x64 patches
 ### **Model**
 > - Concatenation of feature-maps from the two sides of the conveying-path
-> - Learn the 2D model first, and use it to initialize the 3D network. This transfer learning shows much faster convergence and better performance
+> - Learn the 2D model first, and use it to initialize the 3D network. This transfer learning shows much faster convergence and better performance  
 ![Transfer](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B10%5DTransfer.PNG)
 --------
 #
@@ -163,6 +161,6 @@
 ### **Model**
 > - In coronary CTA, the images at the low-dose and routine-dose phases do not match each other exactly due to the cardiac motion
 > - Two generator denotes the mapping form low-dose to routine-dose image and from routine-dose to low-dose image, two adversarial discriminators distinguish between input images and synthesized images from the generators
-> - Using cycle-consistent adversarial denoising network, learn the mapping between the low and routine dose cardiac phases
+> - Using cycle-consistent adversarial denoising network, learn the mapping between the low and routine dose cardiac phases  
 ![CYCLEGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B11%5DCYCLEGAN.PNG)
 
