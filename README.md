@@ -175,7 +175,7 @@
 >>  - use a 64x64 patches when training
 >>  - use 512x512 images when testing
 ### **Model**
-> - Design an edge enhancement module based on the proposed trainable Sobel convolution, which can extract edge features adaptively during the optimization process.
+> - Design an edge enhancement module based on the proposed trainable Sobel convolution, which can extract edge features adaptively during the optimization process.
 > - Construct a fully convolutional neural network (EDCNN), using conveying-paths densely connection to fuse the information of input and edge features.
-> - Introduce the compound loss used for the training stage, which integrates the MSE loss and multi-scales perceptual loss to overcome over smoothing problems.
+> - Introduce the compound loss used for the training stage, which integrates the MSE loss and multi-scales perceptual loss to overcome over smoothing problems.
 ![EDCNN](./img/EDCNN.PNG)
