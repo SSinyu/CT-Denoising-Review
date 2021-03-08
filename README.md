@@ -163,4 +163,19 @@
 > - Two generator denotes the mapping form low-dose to routine-dose image and from routine-dose to low-dose image, two adversarial discriminators distinguish between input images and synthesized images from the generators
 > - Using cycle-consistent adversarial denoising network, learn the mapping between the low and routine dose cardiac phases  
 ![CYCLEGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B11%5DCYCLEGAN.PNG)
-
+--------
+#
+#
+#
+## 12. EDCNN: Edge enhancement-based Densely Connected Network with Compound Loss for Low-Dose CT Denoising
+> [`paper`](https://arxiv.org/abs/2011.00139)  [`code`](https://github.com/workingcoder/EDCNN)
+### **Dataset**
+> - AAPM-Mayo Clinic Low-Dose CT Grand Challenge
+>>  - 512x512, 10 patients
+>>  - use a 64x64 patches when training
+>>  - use 512x512 images when testing
+### **Model**
+> - Design an edge enhancement module based on the proposed trainable Sobel convolution, which can extract edge features adaptively during the optimization process.
+> - Construct a fully convolutional neural network (EDCNN), using conveying-paths densely connection to fuse the information of input and edge features.
+> - Introduce the compound loss used for the training stage, which integrates the MSE loss and multi-scales perceptual loss to overcome over smoothing problems.
+![EDCNN](./img/EDCNN.PNG)
