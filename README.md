@@ -1,8 +1,7 @@
 # CT image denoising with deep learning
------------
-#
-#
-#
+<br/>
+<br/>
+
 ## 01. A deep convolutional neural network using directional wavelets for low-dose X-ray CT reconstruction (KAIST-net)
 > [`paper`](https://aapm.onlinelibrary.wiley.com/doi/epdf/10.1002/mp.12344)
 ### **Dataset**
@@ -14,9 +13,9 @@
 > - Network contains 24 convolution layers  
 > ![KAISTNET](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B01%5DKAISTNET.PNG)
 --------
-#
-#
-#
+<br/>
+<br/>
+
 ## 02. Low-dose CT via Convolutional Neural Network
 > [`paper`](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5330597/pdf/679.pdf)
 ### **Dataset**
@@ -27,9 +26,9 @@
 ### **Model**
 > - Network use only 3 conoluional layers (Conv - ReLU - Conv - ReLU - Conv).
 --------
-#
-#
-#
+<br/>
+<br/>
+
 ## 03. Improving Low-Dose CT Image Using Residual Convolutional Network
 > [`paper`](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8082505)
 ### **Dataset**
@@ -41,9 +40,9 @@
 > - 3D residual convolution net (take into account the spatial continuity of tissues)  
 ![ResCNN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B03%5DResidual_CNN.PNG)
 --------
-#
-#
-#
+<br/>
+<br/>
+
 ## 04. CT Image Denoising with Perceptive Deep Neural Networks
 > [`paper`](https://arxiv.org/pdf/1702.07019.pdf)
 ### **Dataset**
@@ -52,9 +51,9 @@
 > - Compare the denoised output against the ground truth in another high-dimensional feature space (from VGG)  
 ![PerDNN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B04%5DPerceptive_DNN.PNG)
 --------
-#
-#
-#
+<br/>
+<br/>
+
 ## 05. Low-Dose CT with a Residual Encoder-Decoder Convolutional Neural Network (RED-CNN)
 > [`paper`](https://arxiv.org/ftp/arxiv/papers/1702/1702.00288.pdf)
 ### **Dataset**
@@ -68,9 +67,9 @@
 > - Incoporated a deconvolution network and shortcut connections into a CNN model  
 ![REDCNN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B05%5DRED-CNN.PNG)
 --------
-#
-#
-#
+<br/>
+<br/>
+
 ## 06. Generative adversarial networks for noise reduction in low-dose CT
 > [`paper`](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7934380)
 ### **Dataset**
@@ -84,9 +83,9 @@
 > - Discriminator determines whether the input is a real routine-dose image or not  
 ![GAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B06%5DGAN.PNG)
 --------
-#
-#
-#
+<br/>
+<br/>
+
 ## 07. Structure-sensitive Multi-scale Deep Neural Network for Low-Dose CT Denoising
 > [`paper`](https://arxiv.org/pdf/1805.00587.pdf)
 ### **Dataset**
@@ -100,9 +99,9 @@
 > - (Part 3). Discriminator distinguishes between two images  
 ![SMGAN_loss](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B07%5Dloss.PNG)
 --------
-#
-#
-#
+<br/>
+<br/>
+
 ## 08. Low Dose CT Image Denoising Using a Generative Adversarial Network with Wasserstein Distance and Perceptual Loss
 > [`paper`](https://arxiv.org/pdf/1708.00961.pdf)
 ### **Dataset**
@@ -114,9 +113,9 @@
 > - (Part 2). Comparing the perceptual feature of a denoised output against those of the ground truth in an established feature space  
 ![WGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B08%5DWGAN.PNG)
 --------
-#
-#
-#
+<br/>
+<br/>
+
 ## 09. Sharpness-aware Low Dose CT Denoising Using Conditional Generative Adversarial Network
 > [`paper`](https://arxiv.org/pdf/1708.06453.pdf)
 ### **Dataset**
@@ -135,9 +134,9 @@
 ![SAGAN](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B09%5DSAGAN.PNG)
 ![SAGAN_loss](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B09%5DSAGNA_loss.PNG)
 --------
-#
-#
-#
+<br/>
+<br/>
+
 ## 10. 3D Convolutional Encoder-Decoder Network for Low-Dose CT via Transfer Learning from a 2D Trained Network
 > [`paper`](https://arxiv.org/pdf/1802.05656.pdf)
 ### **Dataset**
@@ -149,9 +148,9 @@
 > - Learn the 2D model first, and use it to initialize the 3D network. This transfer learning shows much faster convergence and better performance  
 ![Transfer](https://github.com/SSinyu/CT_DENOISING/blob/master/img/%5B10%5DTransfer.PNG)
 --------
-#
-#
-#
+<br/>
+<br/>
+
 ## 11. Cycle Consistent Adversarial Denoising Network for Multiphase Coronary CT Angiography
 > [`paper`](https://arxiv.org/abs/1806.09748)
 ### **Dataset**
